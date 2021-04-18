@@ -69,4 +69,17 @@ class Local(models.Model):
     def __str__(self):
         return self.name
 
+
+class Posts(models.Model):
+    id = models.AutoField(primary_key=True)
+    create_date = models.DateTimeField(auto_now_add=True, auto_now=False)
+    title = models.CharField(max_length=50)
+    description = models.TextField()
+
+    class Meta: 
+        verbose_name = 'Post'
+        verbose_name_plural = 'Posts'
+
+    def __str__(self):
+        return self.title
 # Create your models here.

@@ -20,4 +20,6 @@ from locales import views as locales_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('index/', locales_views.get_index, name = 'index'),
+    path('product/<int:id>/', locales_views.showProductsDetails, name = 'mostrar_producto')
 ]
