@@ -13,6 +13,7 @@ def get_index(request):
     objects={'categories':showCategories(), 'posts':showPosts()}
     return render(request,'index.html',objects)
 
+#
 
 def showCategories():
     categories = Category.objects.all()

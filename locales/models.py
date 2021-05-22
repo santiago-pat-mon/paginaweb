@@ -15,13 +15,14 @@ class Category(models.Model):
 
 class Business(models.Model):
     nit = models.IntegerField(primary_key=True)
+    name = models.CharField(max_length=30, unique=True)
     mission = models.TextField()
     vision = models.TextField()
     email = models.EmailField()
-    facebook = models.CharField(max_length=60)
-    instagram = models.CharField(max_length=60)
-    name = models.CharField(max_length=30)
     phone = models.CharField(max_length=20)
+    facebook = models.CharField(max_length=60)
+    instagram = models.CharField(max_length=60)  
+    
     img = models.ImageField()
 
     category = models.ForeignKey(Category, null=False, on_delete=models.CASCADE)
@@ -33,17 +34,23 @@ class Business(models.Model):
     def __str__(self):
         return self.name
 
+# class ProductManager(Manager):
+#     def create_product(self,id,name,desciption,price,stock,business):
+#         product = self.create(id=id, name = business+' - '+name, desciption=desciption,price=price,stock=stock)
+#         product.save()
+#         return product
+
 
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=50)
+    name = models.CharField(max_length=50, unique=True)
     desciption = models.TextField()
     price = models.FloatField()
     stock = models.IntegerField()
-    img = models.ImageField()
 
     business = models.ForeignKey(Business, null=False, on_delete=models.CASCADE)
 
+    # objects = ProductManager()
     class Meta: 
         verbose_name = 'Producto'
         verbose_name_plural = 'Productos'
@@ -51,6 +58,23 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+    def save(self, *args, **kwargs):
+        self.name='{} - {}'.format(self.business, self.name)
+        super(Product,self).save(*args,**kwargs)
+        
+        
+
+
+class Imagen(models.Model):
+    id = models.AutoField(primary_key=True)
+    name = models.CharField(max_length=20)
+    img = models.ImageField()
+
+    product = models.ForeignKey(Product,to_field='name', null=False, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name = 'Img Producto'
+        verbose_name_plural = 'Imgs Producto'
 
 class Local(models.Model):
     name = models.CharField(max_length=10, primary_key=True)
@@ -69,17 +93,4 @@ class Local(models.Model):
     def __str__(self):
         return self.name
 
-
-class Posts(models.Model):
-    id = models.AutoField(primary_key=True)
-    create_date = models.DateTimeField(auto_now_add=True, auto_now=False)
-    title = models.CharField(max_length=50)
-    description = models.TextField()
-
-    class Meta: 
-        verbose_name = 'Post'
-        verbose_name_plural = 'Posts'
-
-    def __str__(self):
-        return self.title
 # Create your models here.
