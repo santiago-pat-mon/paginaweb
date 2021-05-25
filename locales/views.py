@@ -3,6 +3,7 @@ from django.shortcuts import render, redirect
 #Data models
 from .models import *
 
+from posts.models import Posts
 # Django
 
 
@@ -10,21 +11,22 @@ from .models import *
 
 def get_index(request):
 
-    objects={'categories':showCategories(), 'posts':showPosts()}
-    return render(request,'index.html',objects)
 
-#
+    objects={'categories':showCategories(),'posts':showPosts()}
+    return render(request,'locales/index.html',objects)
+    # return render(request, 'locales/index.html')
+
 
 def showCategories():
     categories = Category.objects.all()
-    ctx = { 'categories' : categories }
+    ctx = categories
 
     return ctx
 
 
 def showPosts():
     posts = Posts.objects.all()
-    ctx = {'posts' : posts}
+    ctx = posts
     
     return ctx
 

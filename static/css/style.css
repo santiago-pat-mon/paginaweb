@@ -1,0 +1,27 @@
+body {
+    padding-top: 56px;
+}
+.jumbotron {
+    background: url("../img/banner.PNG") no-repeat center;
+}
+.btn-primary {
+    background-color: #151377;
+    border-color: #151377;
+}
+
+.btn-secondary {
+    background-color: transparent;
+    border-color: #151377;
+    color: #151377;
+}
+
+.header_title{
+    color: antiquewhite;
+}
+.p_title{
+    color: antiquewhite;
+}
+
+#contact {
+    background: url("contact.jpg") no-repeat center;
+}

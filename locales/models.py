@@ -2,8 +2,8 @@ from django.db import models
 
 class Category(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=30)
-    img = models.ImageField()
+    name = models.CharField(verbose_name='Nombre',max_length=30)
+    img = models.ImageField(verbose_name='Imagen')
 
     class Meta: 
         verbose_name = 'Categoria'
@@ -15,17 +15,17 @@ class Category(models.Model):
 
 class Business(models.Model):
     nit = models.IntegerField(primary_key=True)
-    name = models.CharField(max_length=30, unique=True)
+    name = models.CharField(verbose_name='Nombre',max_length=30, unique=True)
     mission = models.TextField()
     vision = models.TextField()
     email = models.EmailField()
-    phone = models.CharField(max_length=20)
+    phone = models.CharField(verbose_name='Telefono',max_length=20)
     facebook = models.CharField(max_length=60)
     instagram = models.CharField(max_length=60)  
     
     img = models.ImageField()
 
-    category = models.ForeignKey(Category, null=False, on_delete=models.CASCADE)
+    category = models.ForeignKey(Category, null=False, on_delete=models.CASCADE, verbose_name='Categoria')
 
     class Meta: 
         verbose_name = 'Negocio'
@@ -34,21 +34,16 @@ class Business(models.Model):
     def __str__(self):
         return self.name
 
-# class ProductManager(Manager):
-#     def create_product(self,id,name,desciption,price,stock,business):
-#         product = self.create(id=id, name = business+' - '+name, desciption=desciption,price=price,stock=stock)
-#         product.save()
-#         return product
 
 
 class Product(models.Model):
     id = models.AutoField(primary_key=True)
-    name = models.CharField(max_length=50, unique=True)
-    desciption = models.TextField()
-    price = models.FloatField()
-    stock = models.IntegerField()
+    name = models.CharField(verbose_name='Nombre',max_length=50, unique=True)
+    desciption = models.TextField(verbose_name='Descripcion')
+    price = models.FloatField(verbose_name='Precio')
+    stock = models.IntegerField(verbose_name='Cantidad')
 
-    business = models.ForeignKey(Business, null=False, on_delete=models.CASCADE)
+    business = models.ForeignKey(Business, null=False, on_delete=models.CASCADE, verbose_name='Negocio')
 
     # objects = ProductManager()
     class Meta: 
@@ -77,14 +72,14 @@ class Imagen(models.Model):
         verbose_name_plural = 'Imgs Producto'
 
 class Local(models.Model):
-    name = models.CharField(max_length=10, primary_key=True)
-    width = models.FloatField()
-    deep = models.FloatField()
-    aviable = models.BooleanField()
-    rent = models.FloatField()
-    administration = models.FloatField()
+    name = models.CharField(max_length=10, primary_key=True,verbose_name='Nombre')
+    width = models.FloatField(verbose_name='Ancho')
+    deep = models.FloatField(verbose_name='Profundidad')
+    aviable = models.BooleanField(verbose_name='Disponible')
+    rent = models.FloatField(verbose_name='Arrendo')
+    administration = models.FloatField(verbose_name='Administracion')
 
-    business = models.ForeignKey(Business, null=True, on_delete=models.CASCADE)
+    business = models.ForeignKey(Business, blank=True,null=True, on_delete=models.CASCADE)
 
     class Meta: 
         verbose_name = 'Local'
