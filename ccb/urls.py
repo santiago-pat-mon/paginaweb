@@ -16,12 +16,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
-# from locales import views as locales_views
+from locales import views as locales_views
+
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('locales',include(('locales.urls','local'))),
+    path('locales/',locales_views.get_index, name='index'),
     path('posts/',include(('posts.urls','post')))
     # path('index/', locales_views.get_index, name = 'index'),
     # path('product/<int:id>/', locales_views.showProductsDetails, name = 'mostrar_producto')
-]
+]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
