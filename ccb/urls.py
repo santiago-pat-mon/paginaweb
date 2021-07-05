@@ -24,8 +24,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',include(('locales.urls','local'))),
-    path('posts/',include(('posts.urls','post'))),
-    path('',include(('locales.urls','detalleCategoria')))
+    path('posts/',include(('posts.urls','post')))
 
     # path('index/', locales_views.get_index, name = 'index'),
     # path('product/<int:id>/', locales_views.showProductsDetails, name = 'mostrar_producto')

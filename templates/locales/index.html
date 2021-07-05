@@ -1,33 +1,4 @@
-{% load static %}
-<<<<<<< HEAD
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Intento de retornar objetos</title>
-</head>
-<body>
-    <a href="{url 'indexPosts'}">Hola</a>
-    <ul>
-        {{categories}}
-        {% for categoria in categories %}
-            <li>{{categoria.name}}
-                <img src="{{categoria.img}}" alt="Logo">{{categoria.img}}
-                {{categoria.id}}
-            </li>
-        {% endfor %}
-    </ul>
-    <ul>
-        {{posts}}
-        {% for post in posts %}
-            <li>{{post.description}}</li>
-        {% endfor %}
-    </ul>
-</body>
-</html>
-=======
+
 <!doctype html>
 <html lang="en">
   <head>
@@ -36,9 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% block css %} 
+      {% load static %}
+      <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+      <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    {% endblock css %}
     <title>{% block title %}Centro Comercial Bolivar {% endblock title%}</title>
   </head>
 
@@ -280,4 +253,3 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.min.js" integrity="sha384-Atwg2Pkwv9vp0ygtn1JAojH0nYbwNJLPhwyoVbhoPwBhjQPR5VtM2+xf0Uwh9KtT" crossorigin="anonymous"></script>
   </body>
 </html>
->>>>>>> 630faef14a099ad271d860d0469668e23249a5b6

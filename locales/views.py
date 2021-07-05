@@ -13,7 +13,7 @@ def get_index(request):
     return render(request,'locales/index.html')
 
 def DetailCategory(request):
-    return redirect('detailCategory')
+    return render(request, 'locales/categoryDetail.html')
 
 
 def pruebaDatos(request):
