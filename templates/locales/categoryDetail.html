@@ -1,0 +1,51 @@
+{% extends 'index.html' %}
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <!-- Required meta tags -->
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+        <!-- Bootstrap CSS -->
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-+0n0xVW2eSR5OomGNYDnhzAbDsOXxcvSN1TPprVMTNDbiYZCxYbOOl7+AMvyTG2x" crossorigin="anonymous">
+        <link rel="stylesheet" href="{% static 'css/style.css' %}">
+        {% block title %}
+          Categorias de servicios
+        {% endblock title %}
+      </head>
+      <header>
+        {% block nav %}
+        
+        {% endblock nav %}
+      </header>
+      
+<body>
+    <div><h1 class="text-center">Categoría de leyes</h1></div>
+      
+    <div class="container" >
+      
+      <div class="card">
+      <a href="{}"> <img src="{% static 'img/ley-1.jpg' %}" alt="leyes1"> </a>
+      <h4> M&A Asociados</h4>
+     
+      <p>Despacho de abogados con un amplio portafolio y asesoria personalizada</p>
+      </div>
+      <div class="card">
+        <a href="/categoryBussines"> <img src="{% static 'img/ley-2.jpg' %}" alt="leyes2"> </a>
+      <h4> Lawance</h4>
+      <p>Despacho de abogados con un amplio portafolio y asesoria personalizada</p>
+      </div>
+      <div class="card">
+        <a href="/categoryBussines"> <img src="{% static 'img/ley-3.jpg' %}" alt="leyes3"> </a>
+      <h4>  ARC</h4>
+      <p>Despacho de abogados con un amplio portafolio y asesoria personalizada</p>
+      </div>
+      <div class="card">
+        <a href="/categoryBussines"> <img src="{% static 'img/ley-4.jpg' %}" alt="leyes4"> </a>
+      <h4> MI abogados</h4>
+      <p>Despacho de abogados con un amplio portafolio y asesoria personalizada</p>
+      </div>
+    </div>
+</body>
+</html>

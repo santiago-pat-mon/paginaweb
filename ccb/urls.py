@@ -23,8 +23,10 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('locales/',locales_views.get_index, name='index'),
-    path('posts/',include(('posts.urls','post')))
+    path('',include(('locales.urls','local'))),
+    path('posts/',include(('posts.urls','post'))),
+    path('',include(('locales.urls','detalleCategoria')))
+
     # path('index/', locales_views.get_index, name = 'index'),
     # path('product/<int:id>/', locales_views.showProductsDetails, name = 'mostrar_producto')
 ]+ static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

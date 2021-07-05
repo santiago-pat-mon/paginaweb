@@ -10,10 +10,17 @@ from posts.models import Posts
 # Create your views here.
 
 def get_index(request):
+    return render(request,'locales/index.html')
+
+def DetailCategory(request):
+    return redirect('detailCategory')
+
+
+def pruebaDatos(request):
 
 
     objects={'categories':showCategories(),'posts':showPosts()}
-    return render(request,'locales/index.html',objects)
+    return render(request,'locales/pruebaDatos.html',objects)
     # return render(request, 'locales/index.html')
 
 
